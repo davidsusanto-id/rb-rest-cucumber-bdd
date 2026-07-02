@@ -2,8 +2,17 @@ plugins {
     id 'java'
 }
 
+group = 'io.davidsusanto'
+version = '1.0.0'
+
 repositories {
     mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(26)
+    }
 }
 
 test {
