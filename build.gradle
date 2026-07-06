@@ -2,8 +2,44 @@ plugins {
     id 'java'
 }
 
+/**
+ * Use `version = '1.0.0'` for cleaner syntax and drop `-SNAPSHOT` unless you're actively publishing pre-release
+ * artifacts to a Maven/Gradle repository.
+ */
+group = 'io.davidsusanto'
+version = '1.0.0'
+
+ext {
+    cucumberVersion = '7.20.1'
+    junitVersion = '5.11.3'
+}
+
 repositories {
     mavenCentral()
+}
+
+/**
+ * If the team uses different JDK installations, replace the `java {}` block with a toolchain, which handles both
+ * compilation and runtime.
+ *
+ * This tells Gradle to find (or auto-download) a JDK 26 regardless of what's in `JAVA_HOME`, so you don't need to set
+ * `sourceCompatibility` / `targetCompatibility separately.
+ */
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(26)
+    }
+}
+
+dependencies {
+    // Cucumber
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}"
+
+    // JUnit 5 (Platform Suite to launch Cucumber)
+    testImplementation "org.junit.platform:junit-platform-suite:1.11.3"
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.11.3" // needed only at test execution time, not for compilation
 }
 
 test {
