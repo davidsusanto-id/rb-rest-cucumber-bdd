@@ -8,6 +8,6 @@ package (`io.davidsusanto.restfulbooker.steps`), and Cucumber loads every glue c
 lifecycle annotations instead of step annotations.
 
 So placement is driven by one rule: **the class must be under the glue package to be discovered**. `steps` is the glue
-package, so `Hooks.java` goes there. If I'd put it in `io.davidsusanto.restfulbooker.config` or `io.davidsusanto.utils`, those aren't
-scanned as glue, and the hooks would silently never fire -- no error, just skipped setup. That failure mode is easy to
-miss and annoying to debug.
+package, so `Hooks.java` goes there. If I'd put it in `io.davidsusanto.restfulbooker.config` or 
+`io.davidsusanto.restfulbooker.utils`, those aren't scanned as glue, and the hooks would silently never fire -- 
+no error, just skipped setup. That failure mode is easy to miss and annoying to debug.
