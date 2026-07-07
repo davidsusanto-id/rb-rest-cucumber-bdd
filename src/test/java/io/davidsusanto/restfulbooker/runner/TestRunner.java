@@ -1,4 +1,4 @@
-package io.davidsusanto.runner;
+package io.davidsusanto.restfulbooker.runner;
 
 import org.junit.platform.suite.api.ConfigurationParameter;
 import org.junit.platform.suite.api.IncludeEngines;
@@ -17,7 +17,7 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @SelectClasspathResource("features")
 @ConfigurationParameter(
         key = GLUE_PROPERTY_NAME,
-        value = "io.davidsusanto.steps")
+        value = "io.davidsusanto.restfulbooker.steps")
 @ConfigurationParameter(
         key = PLUGIN_PROPERTY_NAME,
         value = "pretty, html:build/cucumber-report.html, json:build/cucumber-report.json, junit:build/cucumber-junit.xml")

@@ -6,7 +6,7 @@ plugins {
  * Use `version = '1.0.0'` for cleaner syntax and drop `-SNAPSHOT` unless you're actively publishing pre-release
  * artifacts to a Maven/Gradle repository.
  */
-group = 'io.davidsusanto'
+group = 'io.davidsusanto.restfulbooker'
 version = '1.0.0'
 
 ext {

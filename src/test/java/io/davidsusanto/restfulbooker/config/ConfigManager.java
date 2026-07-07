@@ -1,4 +1,4 @@
-package io.davidsusanto.config;
+package io.davidsusanto.restfulbooker.config;
 
 import java.io.IOException;
 import java.io.InputStream;

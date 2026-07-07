@@ -1,9 +1,9 @@
-package io.davidsusanto.steps;
+package io.davidsusanto.restfulbooker.steps;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
-import io.davidsusanto.config.ConfigManager;
+import io.davidsusanto.restfulbooker.config.ConfigManager;
 import io.restassured.RestAssured;
 
 public class Hooks {
