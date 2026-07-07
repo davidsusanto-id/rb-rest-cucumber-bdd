@@ -10,7 +10,7 @@ group = 'io.davidsusanto.restfulbooker'
 version = '1.0.0'
 
 ext {
-    restAssuredVersion = '5.5.0'
+    restAssuredVersion = '6.0.0'
     cucumberVersion = '7.20.1'
     junitVersion = '5.11.3'
 }
@@ -49,4 +49,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+        exceptionFormat = 'full'
+        showStandardStreams = true
+    }
 }
