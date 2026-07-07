@@ -12,3 +12,10 @@ Built with **REST Assured + Cucumber (BDD) + JUnit 5 Platform + Gradle**.
 | Test runner / enginer | JUnit 5 Platform Suite + Cucumber engine |
 | Build / dependencies  | Gradle (Java 26 toolchain)               |
 | DI between steps      | cucumber-picocontainer                   |
+
+## Running
+
+```bash
+# All tests
+./gradlew clean test
+```
