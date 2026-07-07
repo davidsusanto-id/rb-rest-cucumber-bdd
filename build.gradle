@@ -39,6 +39,7 @@ dependencies {
     // Cucumber
     testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
     testImplementation "io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-picocontainer:${cucumberVersion}"
 
     // JUnit 5 (Platform Suite to launch Cucumber)
     testImplementation "org.junit.platform:junit-platform-suite:1.11.3"
