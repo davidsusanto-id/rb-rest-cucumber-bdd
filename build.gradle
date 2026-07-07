@@ -10,6 +10,7 @@ group = 'io.davidsusanto'
 version = '1.0.0'
 
 ext {
+    restAssuredVersion = '5.5.0'
     cucumberVersion = '7.20.1'
     junitVersion = '5.11.3'
 }
@@ -32,6 +33,9 @@ java {
 }
 
 dependencies {
+    // REST Assured
+    testImplementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+
     // Cucumber
     testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
     testImplementation "io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}"
