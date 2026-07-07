@@ -13,6 +13,7 @@ ext {
     restAssuredVersion = '6.0.0'
     cucumberVersion = '7.20.1'
     junitVersion = '5.11.3'
+    jacksonVersion = '2.18.1'
 }
 
 repositories {
@@ -44,7 +45,11 @@ dependencies {
     // JUnit 5 (Platform Suite to launch Cucumber)
     testImplementation "org.junit.platform:junit-platform-suite:1.11.3"
     testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
-    testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.11.3" // needed only at test execution time, not for compilation
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.11.3"
+    // needed only at test execution time, not for compilation
+
+    // JSON (POJO serialization)
+    testImplementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
 }
 
 test {

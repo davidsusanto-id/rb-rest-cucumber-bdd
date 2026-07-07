@@ -31,4 +31,12 @@ public class ConfigManager {
     public static String baseUri() {
         return get("base.uri");
     }
+
+    public static String username() {
+        return get("auth.username");
+    }
+
+    public static String password() {
+        return get("auth.password");
+    }
 }
