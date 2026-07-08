@@ -21,6 +21,22 @@ import static io.restassured.RestAssured.given;
 public class BookingClient {
 
     private static final String BOOKING = "/booking";
+    private static final String BOOKING_ID = "/booking/{id}";
+
+    public Response getBookingIds() {
+        return given()
+                .spec(RequestSpecFactory.request())
+                .when()
+                .get(BOOKING);
+    }
+
+    public Response getBooking(int id) {
+        return given()
+                .spec(RequestSpecFactory.request())
+                .pathParam("id", id)
+                .when()
+                .get(BOOKING_ID);
+    }
 
     public Response createBooking(Booking booking) {
         return given()

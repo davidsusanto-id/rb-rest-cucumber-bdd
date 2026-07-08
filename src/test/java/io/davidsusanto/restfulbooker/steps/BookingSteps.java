@@ -1,5 +1,6 @@
 package io.davidsusanto.restfulbooker.steps;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.davidsusanto.restfulbooker.client.BookingClient;
@@ -20,7 +21,47 @@ public class BookingSteps {
         this.context = context;
     }
 
+    // ---------- Get ----------
+
+    @When("I request all booking ids")
+    public void iRequestAllBookingIds() {
+        context.setResponse(bookingClient.getBookingIds());
+    }
+
+    @When("I request the created booking by id")
+    public void iRequestTheCreatedBookingById() {
+        context.setResponse(bookingClient.getBooking(context.getBookingId()));
+    }
+
+    @When("I request a booking with id {int}")
+    public void iRequestABookingWithId(int id) {
+        context.setResponse(bookingClient.getBooking(id));
+    }
+
+    @Then("a non-empty list of booking ids should be returned")
+    public void aNonEmptyListOfBookingIdsShouldBeReturned() {
+        context.getResponse().then().spec(ResponseSpecFactory.okJson());
+        int size = context.getResponse().jsonPath().getList("bookingid").size();
+        assertThat(size, greaterThan(0));
+    }
+
+    @Then("the booking details should be returned")
+    public void theBookingDetailsShouldBeReturned() {
+        context.getResponse().then()
+                .spec(ResponseSpecFactory.okJson())
+                .body("firstname", notNullValue())
+                .body("lastname", notNullValue())
+                .body("bookingdates.checkin", notNullValue())
+                .body("bookingdates.checkout", notNullValue());
+    }
+
     // ---------- Create ----------
+
+    @Given("a booking has been created with default data")
+    public void aBookingHasBeenCreatedWithDefaultData() {
+        iCreateBookingWithDefaultData();
+        assertThat("Precondition: booking id must exist", context.getBookingId(), notNullValue());
+    }
 
     @When("I create a booking with default data")
     public void iCreateBookingWithDefaultData() {
