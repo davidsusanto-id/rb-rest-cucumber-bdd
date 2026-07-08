@@ -3,9 +3,8 @@ package io.davidsusanto.restfulbooker.steps;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.davidsusanto.restfulbooker.client.AuthClient;
-import io.davidsusanto.restfulbooker.config.ConfigManager;
 import io.davidsusanto.restfulbooker.context.ScenarioContext;
-import io.davidsusanto.restfulbooker.models.AuthRequest;
+import io.davidsusanto.restfulbooker.data.AuthDataFactory;
 import io.davidsusanto.restfulbooker.specs.ResponseSpecFactory;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,12 +21,12 @@ public class AuthSteps {
 
     @When("I request a token with valid credentials")
     public void iRequestTokenWithValidCredentials() {
-        context.setResponse(authClient.createToken(ConfigManager.username(), ConfigManager.password()));
+        context.setResponse(authClient.createToken(AuthDataFactory.valid()));
     }
 
     @When("I request a token with username {string} and password {string}")
     public void iRequestTokenWithUsernameAndPassword(String username, String password) {
-        context.setResponse(authClient.createToken(new AuthRequest(username, password)));
+        context.setResponse(authClient.createToken(AuthDataFactory.of(username, password)));
     }
 
     @Then("a valid token should be returned")
