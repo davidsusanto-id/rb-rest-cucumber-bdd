@@ -1,4 +1,4 @@
-Feature: Authentication - CreateToken
+Feature: Generate an authentication token
   As an API consumer
   I want to obtain an auth token
   So that I can perform protected booking operations

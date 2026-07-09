@@ -127,6 +127,27 @@ public class BookingSteps {
                 .body("totalprice", equalTo(updated.getTotalprice()));
     }
 
+    // ---------- Partial Update (PATCH) ----------
+    @When("I partially update the booking firstname to {string}")
+    public void iPartiallyUpdateTheBookingFirstname(String firstname) {
+        String body = "{\"firstname\":\"" + firstname + "\"}";
+        context.put("firstname", firstname);
+        context.setResponse(
+                bookingClient.partialUpdateBooking(
+                        context.getBookingId(),
+                        body,
+                        context.getToken()
+                )
+        );
+    }
+
+    @Then("the booking firstname should be {string}")
+    public void theBookingFirstnameShouldBe(String firstname) {
+        context.getResponse().then()
+                .spec(ResponseSpecFactory.okJson())
+                .body("firstname", equalTo(firstname));
+    }
+
     // ---------- Request Status ----------
     @Then("the booking should not be found")
     public void theBookingShouldNotBeFound() {
