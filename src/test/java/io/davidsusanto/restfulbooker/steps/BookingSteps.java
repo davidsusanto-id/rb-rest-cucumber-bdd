@@ -148,7 +148,31 @@ public class BookingSteps {
                 .body("firstname", equalTo(firstname));
     }
 
+    // ---------- Delete ----------
+
+    @When("I delete the booking")
+    public void iDeleteTheBooking() {
+        context.setResponse(
+                bookingClient.deleteBooking(
+                        context.getBookingId(),
+                        context.getToken()
+                )
+        );
+    }
+
+    @Then("the booking should be deleted successfully")
+    public void theBookingShouldBeDeletedSuccessfully() {
+        context.getResponse().then().spec(ResponseSpecFactory.created());
+    }
+
+    @Then("the deleted booking should no longer be retrievable")
+    public void theDeletedBookingShouldNoLongerBeRetrievable() {
+        context.setResponse(bookingClient.getBooking(context.getBookingId()));
+        context.getResponse().then().spec(ResponseSpecFactory.notFound());
+    }
+
     // ---------- Request Status ----------
+
     @Then("the booking should not be found")
     public void theBookingShouldNotBeFound() {
         context.getResponse().then().spec(ResponseSpecFactory.notFound());

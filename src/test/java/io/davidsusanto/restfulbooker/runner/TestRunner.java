@@ -20,6 +20,10 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
         value = "io.davidsusanto.restfulbooker.steps")
 @ConfigurationParameter(
         key = PLUGIN_PROPERTY_NAME,
-        value = "pretty, html:build/cucumber-report.html, json:build/cucumber-report.json, junit:build/cucumber-junit.xml")
+        value = "pretty, " +
+                "html:build/cucumber-report.html, " +
+                "json:build/cucumber-report.json, " +
+                "junit:build/cucumber-junit.xml, " +
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm")
 public class TestRunner {
 }

@@ -1,3 +1,4 @@
+@auth @smoke
 Feature: Generate an authentication token
   As an API consumer
   I want to obtain an auth token
