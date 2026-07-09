@@ -1,5 +1,5 @@
 @booking @read
-Feature: GetBookingIds and GetBooking
+Feature: Retrieve bookings
   As an API consumer
   I want to retrieve booking ids and individual bookings
   So that I can read reservation data

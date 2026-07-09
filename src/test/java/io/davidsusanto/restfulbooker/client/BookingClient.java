@@ -55,4 +55,14 @@ public class BookingClient {
                 .when()
                 .put(BOOKING_ID);
     }
+
+    public Response partialUpdateBooking(int id, String jsonBody, String token) {
+        return given()
+                .spec(RequestSpecFactory.request())
+                .cookie("token", token)
+                .pathParam("id", id)
+                .body(jsonBody)
+                .when()
+                .patch(BOOKING_ID);
+    }
 }

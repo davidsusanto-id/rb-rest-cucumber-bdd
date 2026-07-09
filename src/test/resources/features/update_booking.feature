@@ -1,5 +1,5 @@
 @booking @update
-Feature: UpdateBooking
+Feature: Update an existing booking
   As an authenticated API consumer
   I want to fully update a booking
   So that the reservation reflects new details

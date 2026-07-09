@@ -1,5 +1,5 @@
 @ping @health @smoke
-Feature: Ping - HealthCheck
+Feature: Service health check
   As an API consumer
   I want to verify the service is up
   So that I can confirm availability before running tests
