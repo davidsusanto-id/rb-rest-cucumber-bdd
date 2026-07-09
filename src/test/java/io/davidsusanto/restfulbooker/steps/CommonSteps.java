@@ -2,6 +2,7 @@ package io.davidsusanto.restfulbooker.steps;
 
 import io.cucumber.java.en.Then;
 import io.davidsusanto.restfulbooker.context.ScenarioContext;
+import io.davidsusanto.restfulbooker.specs.ResponseSpecFactory;
 
 /**
  * Entity-agnostic step definitions usable across all features.
@@ -16,8 +17,8 @@ public class CommonSteps {
         this.context = context;
     }
 
-    @Then("the response status code should be {int}")
-    public void theResponseStatusCodeShouldBe(int statusCode) {
-        context.getResponse().then().statusCode(statusCode);
+    @Then("the request should be forbidden")
+    public void theRequestShouldBeForbidden() {
+        context.getResponse().then().spec(ResponseSpecFactory.forbidden());
     }
 }

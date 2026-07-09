@@ -89,4 +89,47 @@ public class BookingSteps {
                 .body("booking.depositpaid", equalTo(submitted.getDepositpaid()))
                 .body("booking.additionalneeds", equalTo(submitted.getAdditionalneeds()));
     }
+
+    // ---------- Update (PUT) ----------
+
+    @When("I update the booking with new data")
+    public void iUpdateTheBookingWithNewData() {
+        Booking updated = BookingDataFactory.updatedBooking();
+        context.put("payload", updated);
+        context.setResponse(
+                bookingClient.updateBooking(
+                        context.getBookingId(),
+                        updated,
+                        context.getToken()
+                )
+        );
+    }
+
+    @When("I update the booking with new data without a token")
+    public void iUpdateTheBookingWithNewDataWithoutToken() {
+        Booking updated = BookingDataFactory.updatedBooking();
+        context.setResponse(
+                bookingClient.updateBooking(
+                        context.getBookingId(),
+                        updated,
+                        "invalid-token"
+                )
+        );
+    }
+
+    @Then("the booking should reflect the updated data")
+    public void theBookingShouldReflectTheUpdatedData() {
+        Booking updated = (Booking) context.get("payload");
+        context.getResponse().then()
+                .spec(ResponseSpecFactory.okJson())
+                .body("firstname", equalTo(updated.getFirstname()))
+                .body("lastname", equalTo(updated.getLastname()))
+                .body("totalprice", equalTo(updated.getTotalprice()));
+    }
+
+    // ---------- Request Status ----------
+    @Then("the booking should not be found")
+    public void theBookingShouldNotBeFound() {
+        context.getResponse().then().spec(ResponseSpecFactory.notFound());
+    }
 }

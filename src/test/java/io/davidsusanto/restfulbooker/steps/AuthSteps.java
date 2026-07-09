@@ -1,5 +1,6 @@
 package io.davidsusanto.restfulbooker.steps;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.davidsusanto.restfulbooker.client.AuthClient;
@@ -17,6 +18,15 @@ public class AuthSteps {
 
     public AuthSteps(ScenarioContext context) {
         this.context = context;
+    }
+
+    @Given("a valid authentication token has been generated")
+    public void aValidAuthenticationTokenHasBeenGenerated() {
+        context.setResponse(authClient.createToken(AuthDataFactory.valid()));
+        String token = context.getResponse().jsonPath().getString("token");
+        assertThat(token, notNullValue());
+        assertThat(token.length(), greaterThan(0));
+        context.setToken(token);
     }
 
     @When("I request a token with valid credentials")

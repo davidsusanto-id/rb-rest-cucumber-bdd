@@ -1,3 +1,4 @@
+@booking @read
 Feature: GetBookingIds and GetBooking
   As an API consumer
   I want to retrieve booking ids and individual bookings
@@ -14,4 +15,4 @@ Feature: GetBookingIds and GetBooking
 
   Scenario: Requesting a non-existing booking returns 404
     When I request a booking with id 99999999
-    Then the response status code should be 404
+    Then the booking should not be found
