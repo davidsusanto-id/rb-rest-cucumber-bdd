@@ -12,6 +12,7 @@ import java.util.Map;
 public class ScenarioContext {
 
     private Response response;
+    private String token;
     private Integer bookingId;
     private final Map<String, Object> store = new HashMap<>();
 
@@ -29,6 +30,14 @@ public class ScenarioContext {
 
     public void put(String key, Object value) {
         store.put(key, value);
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public Integer getBookingId() {

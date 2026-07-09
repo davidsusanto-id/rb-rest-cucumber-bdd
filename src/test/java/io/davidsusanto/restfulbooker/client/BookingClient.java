@@ -45,4 +45,14 @@ public class BookingClient {
                 .when()
                 .post(BOOKING);
     }
+
+    public Response updateBooking(int id, Booking booking, String token) {
+        return given()
+                .spec(RequestSpecFactory.request())
+                .cookie("token", token)
+                .pathParam("id", id)
+                .body(booking)
+                .when()
+                .put(BOOKING_ID);
+    }
 }

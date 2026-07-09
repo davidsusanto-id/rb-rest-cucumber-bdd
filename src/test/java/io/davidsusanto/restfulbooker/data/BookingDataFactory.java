@@ -28,4 +28,18 @@ public class BookingDataFactory {
                 "breakfast"
         );
     }
+
+    /**
+     * A distinct, valid booking used as the update fixture
+     */
+    public static Booking updatedBooking() {
+        return new Booking(
+                "Mary",
+                "Jane",
+                275,
+                false,
+                new BookingDates("2025-03-01", "2025-03-08"),
+                "Late checkout"
+        );
+    }
 }

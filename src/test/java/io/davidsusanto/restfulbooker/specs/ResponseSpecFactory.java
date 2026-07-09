@@ -27,4 +27,22 @@ public class ResponseSpecFactory {
                 .expectStatusCode(201)
                 .build();
     }
+
+    /**
+     * 403 Forbidden: protected operation with a missing/invalid token.
+     */
+    public static ResponseSpecification forbidden() {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(403)
+                .build();
+    }
+
+    /**
+     * 404 Not Found: booking id does not exist.
+     */
+    public static ResponseSpecification notFound() {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(404)
+                .build();
+    }
 }
